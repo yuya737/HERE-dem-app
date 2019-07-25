@@ -44,7 +44,7 @@ select.on_change('value', triggerFunction)
 
 def TBB(graph): 
     curdoc().clear()  
-    TBB = pd.read_csv("Data/TBB.csv")
+    TBB = pd.read_csv("myhereapp/Data/TBB.csv")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     names = [TBB.columns[i] for i in range(1,8)]
     for i in range(7):
@@ -64,7 +64,7 @@ def TBB(graph):
 
 def OpenMP(graph):
     curdoc().clear()
-    OpenMP = pd.read_csv("Data/OpenMP.csv")
+    OpenMP = pd.read_csv("myhereapp/Data/OpenMP.csv")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     names = [OpenMP.columns[i] for i in range(1,8)]
     for i in range(7):
@@ -86,7 +86,7 @@ def singleGPUCompute(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show, y_axis_type="log")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920])
     setHover(graph)
-    singleGPUCompute = pd.read_csv("Data/singleGPUCompute.csv")
+    singleGPUCompute = pd.read_csv("myhereapp/Data/singleGPUCompute.csv")
     names = [singleGPUCompute.columns[i] for i in range(1,5)]
     for i in range(4):
         source = ColumnDataSource(data={
@@ -108,7 +108,7 @@ def singleGPUData(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show, y_axis_type="log")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920])
     setHover(graph)
-    singleGPUData = pd.read_csv("Data/singleGPUData.csv")
+    singleGPUData = pd.read_csv("myhereapp/Data/singleGPUData.csv")
     names = [singleGPUData.columns[i] for i in range(1,5)]
     for i in range(4):
         source = ColumnDataSource(data={
@@ -130,7 +130,7 @@ def multiGPUCompute(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     setHover(graph)
-    multiGPUCompute = pd.read_csv("Data/multiGPUCompute.csv")
+    multiGPUCompute = pd.read_csv("myhereapp/Data/multiGPUCompute.csv")
     names = [multiGPUCompute.columns[i] for i in range(1,3)]
 
     for i in range(2):
@@ -153,7 +153,7 @@ def multiGPUData(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     setHover(graph)
-    multiGPUData = pd.read_csv("Data/multiGPUData.csv")
+    multiGPUData = pd.read_csv("myhereapp/Data/multiGPUData.csv")
     names = [multiGPUData.columns[i] for i in range(1,3)]
 
     for i in range(2):
