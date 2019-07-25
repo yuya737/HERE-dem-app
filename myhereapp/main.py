@@ -64,7 +64,7 @@ def TBB(graph):
 
 def OpenMP(graph):
     curdoc().clear()
-    OpenMP = pd.read_csv("Data/OpenMP.csv")
+    OpenMP = pd.read_csv("OpenMP.csv")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     names = [OpenMP.columns[i] for i in range(1,8)]
     for i in range(7):
