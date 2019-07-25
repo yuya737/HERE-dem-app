@@ -55,7 +55,7 @@ def TBB(graph):
         })
         graph.line('particles', 'time', source=source, legend=names[i], line_width=2, color=colors[i])
         circle = graph.circle('particles', 'time', source=source, size=6, color=colors[i])
-    graph.xaxis.axis_label = "# Particles"
+    graph.xaxis.axis_label = "# Particles (millions)"
     graph.yaxis.axis_label = "time (ms)"
     graph.legend.location="top_left"
     graph.title.text="TBB Backend"
@@ -64,7 +64,7 @@ def TBB(graph):
 
 def OpenMP(graph):
     curdoc().clear()
-    OpenMP = pd.read_csv("Data/OpenMP.csv")
+    OpenMP = pd.read_csv("OpenMP.csv")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     names = [OpenMP.columns[i] for i in range(1,8)]
     for i in range(7):
@@ -75,7 +75,7 @@ def OpenMP(graph):
         })
         graph.line('particles', 'time', source=source, legend=names[i], line_width=2, color=colors[i])
         circle = graph.circle('particles', 'time', source=source, size=6, color=colors[i])
-    graph.xaxis.axis_label = "# Particles"
+    graph.xaxis.axis_label = "# Particles (millions)"
     graph.yaxis.axis_label = "time (ms)"
     graph.legend.location="top_left"
     graph.title.text="OpenMP Backend"
@@ -86,7 +86,7 @@ def singleGPUCompute(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show, y_axis_type="log")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920])
     setHover(graph)
-    singleGPUCompute = pd.read_csv("Data/singleGPUCompute.csv")
+    singleGPUCompute = pd.read_csv("singleGPUCompute.csv")
     names = [singleGPUCompute.columns[i] for i in range(1,5)]
     for i in range(4):
         source = ColumnDataSource(data={
@@ -97,7 +97,7 @@ def singleGPUCompute(graph):
         graph.line('particles', 'time', source=source, legend=names[i], line_width=2, color=colors[i])
         circle = graph.circle('particles', 'time', source=source, size=6, color=colors[i])
     
-    graph.xaxis.axis_label = "# Particles"
+    graph.xaxis.axis_label = "# Particles (millions)"
     graph.yaxis.axis_label = "time (ms)"
     graph.legend.location="top_left"
     graph.title.text="Single GPU Compute"
@@ -108,7 +108,7 @@ def singleGPUData(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show, y_axis_type="log")
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920])
     setHover(graph)
-    singleGPUData = pd.read_csv("Data/singleGPUData.csv")
+    singleGPUData = pd.read_csv("singleGPUData.csv")
     names = [singleGPUData.columns[i] for i in range(1,5)]
     for i in range(4):
         source = ColumnDataSource(data={
@@ -119,7 +119,7 @@ def singleGPUData(graph):
         graph.line('particles', 'time', source=source, legend=names[i], line_width=2, color=colors[i])
         circle = graph.circle('particles', 'time', source=source, size=6, color=colors[i])
     
-    graph.xaxis.axis_label = "# Particles"
+    graph.xaxis.axis_label = "# Particles (millions)"
     graph.yaxis.axis_label = "time (ms)"
     graph.legend.location="top_left"
     graph.title.text="Single GPU Data Transfer"
@@ -130,7 +130,7 @@ def multiGPUCompute(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     setHover(graph)
-    multiGPUCompute = pd.read_csv("Data/multiGPUCompute.csv")
+    multiGPUCompute = pd.read_csv("multiGPUCompute.csv")
     names = [multiGPUCompute.columns[i] for i in range(1,3)]
 
     for i in range(2):
@@ -142,7 +142,7 @@ def multiGPUCompute(graph):
         graph.line('particles', 'time', source=source, legend=names[i], line_width=2, color=colors[i])
         circle = graph.circle('particles', 'time', source=source, size=6, color=colors[i])
     
-    graph.xaxis.axis_label = "# Particles"
+    graph.xaxis.axis_label = "# Particles (millions)"
     graph.yaxis.axis_label = "time (ms)"
     graph.legend.location="top_left"
     graph.title.text="Multi GPU Compute"
@@ -153,7 +153,7 @@ def multiGPUData(graph):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
     graph.xaxis.ticker = FixedTicker(ticks=[160,320,640,960,1280,1600,1920,2240,2560,2880])
     setHover(graph)
-    multiGPUData = pd.read_csv("/Data/multiGPUData.csv")
+    multiGPUData = pd.read_csv("multiGPUData.csv")
     names = [multiGPUData.columns[i] for i in range(1,3)]
 
     for i in range(2):
@@ -165,7 +165,7 @@ def multiGPUData(graph):
         graph.line('particles', 'time', source=source, legend=names[i], line_width=2, color=colors[i])
         circle = graph.circle('particles', 'time', source=source, size=6, color=colors[i])
     
-    graph.xaxis.axis_label = "# Particles"
+    graph.xaxis.axis_label = "# Particles (millions)"
     graph.yaxis.axis_label = "time (ms)"
     graph.legend.location="top_left"
     graph.title.text="Multi GPU Compute"
