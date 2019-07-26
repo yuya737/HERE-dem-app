@@ -6,6 +6,7 @@ from bokeh.models.widgets import Select
 from bokeh.layouts import row, column
 from bokeh.models.tickers import FixedTicker
 
+# Dic to hold graph types?
 graphDic = {
     "TBB backend": "tbb",
     "OpenMP backend": "openmp",
@@ -15,10 +16,12 @@ graphDic = {
     "Multi GPU Compute": "multiGPUCompute"
 }
 
+# idk what tools_to_show does but seems to work
 tools_to_show = 'hover,box_zoom,pan,save,reset,wheel_zoom'
 graph = figure(plot_width=800, plot_height=400, title="TBB Backend", x_axis_label='# Particles', y_axis_label='time (ms)', tools=tools_to_show)
 colors = ['red', 'blue', 'purple', 'green', 'black', 'pink', 'orange']
 
+# trigger this when you change select
 def triggerFunction(attr, old, new):
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
     setHover(graph)
@@ -37,11 +40,11 @@ def triggerFunction(attr, old, new):
     else:
         raise Exception("WRONG!!!")
 
-
+# add select button
 select=Select(title="Select Graph:", value="TBB backend",options=["TBB backend", "OpenMP backend","Single GPU Data Transfer", "Single GPU Compute", "Multi GPU Data Transfer", "Multi GPU Compute"])
 select.on_change('value', triggerFunction)
 
-
+# make TBB graph
 def TBB(graph): 
     curdoc().clear()  
     TBB = pd.read_csv("TBB.csv")
@@ -61,7 +64,7 @@ def TBB(graph):
     graph.title.text="TBB Backend"
     curdoc().add_root(column(select, graph))
     
-
+# make OpenMP graph
 def OpenMP(graph):
     curdoc().clear()
     OpenMP = pd.read_csv("OpenMP.csv")
@@ -81,6 +84,7 @@ def OpenMP(graph):
     graph.title.text="OpenMP Backend"
     curdoc().add_root(column(select, graph))
 
+# make single gpu compute graph
 def singleGPUCompute(graph):
     curdoc().clear()
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show, y_axis_type="log")
@@ -103,6 +107,7 @@ def singleGPUCompute(graph):
     graph.title.text="Single GPU Compute"
     curdoc().add_root(column(select, graph))
 
+# make single gpu data graph
 def singleGPUData(graph):
     curdoc().clear()
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show, y_axis_type="log")
@@ -125,6 +130,7 @@ def singleGPUData(graph):
     graph.title.text="Single GPU Data Transfer"
     curdoc().add_root(column(select, graph))
 
+# make multi gpu compute
 def multiGPUCompute(graph):
     curdoc().clear()
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
@@ -148,6 +154,7 @@ def multiGPUCompute(graph):
     graph.title.text="Multi GPU Compute"
     curdoc().add_root(column(select, graph))
 
+# make multi gpu data
 def multiGPUData(graph):
     curdoc().clear()
     graph = figure(plot_width=800, plot_height=400, y_axis_label='time (ms)', tools=tools_to_show)
@@ -171,7 +178,7 @@ def multiGPUData(graph):
     graph.title.text="Multi GPU Compute"
     curdoc().add_root(column(select, graph))
 
-
+# tooltips for graph
 def setHover(graph):
     hover = graph.select(dict(type=HoverTool))
     hover.tooltips=[
@@ -179,7 +186,7 @@ def setHover(graph):
         ("# Particles", "@particles"),
         ("time", "@time")
     ]
-
+# set first graph
 setHover(graph)
 TBB(graph)
 curdoc().clear()
